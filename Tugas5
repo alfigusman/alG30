@@ -99,7 +99,7 @@ class tugas5{
 
 				}else if (sort == 5) {
 
-					quickSort(0, n);
+					quickSort(0, n-1);
 
 					ulang = true;
 					
@@ -147,7 +147,7 @@ class tugas5{
 
 	}
 
-	public void bubbleSort(){
+	static void bubbleSort(){
 
 		for (int i = 0; i < n ; i++ ) {
 						
@@ -169,7 +169,7 @@ class tugas5{
 
 	}
 
-	public void bubbleSort2(){
+	static void bubbleSort2(){
 
 		for (int i = 0; i < n ; i++ ) {
 						
@@ -191,7 +191,7 @@ class tugas5{
 
 	}
 
-	public void selectionSort(){
+	static void selectionSort(){
 		
 		for (int i = 0; i < n-1 ; i++) {
 						
@@ -215,7 +215,7 @@ class tugas5{
 
 	}
 
-	public void selectionSort2(){
+	static void selectionSort2(){
 		
 		for (int i = 0; i < n-1 ; i++) {
 						
@@ -239,7 +239,7 @@ class tugas5{
 
 	}
 
-	public void insertionSort(){
+	static void insertionSort(){
 
 		for (int i = 1; i < n; i++) {
 
@@ -294,7 +294,7 @@ class tugas5{
 		
 	}
 
-	public void insertionSort2(){
+	static void insertionSort2(){
 
 		for (int i = 1; i < n; i++) {
 
@@ -349,7 +349,7 @@ class tugas5{
 		
 	}
 	
-	public void mergeSort(int l, int r){
+	static void mergeSort(int l, int r){
 	
 		if (l == r) {
 	
@@ -369,7 +369,7 @@ class tugas5{
 	
 	}
 
-	public void Merging(int kiri, int tengah, int kanan){
+	static void Merging(int kiri, int tengah, int kanan){
 		
 		int j=0;
 		
@@ -434,7 +434,7 @@ class tugas5{
 
 	}
 
-	public void quickSort(int l, int r){
+	static void quickSort(int l, int r){
 
 		int i,j,mid;
 
@@ -488,7 +488,7 @@ class tugas5{
 		
 	}
 
-	public void swap(int a, int b){
+	static void swap(int a, int b){
 
 		String temp; 
 
@@ -518,7 +518,7 @@ class tugas5{
 
 	}
 
-	public void display(){
+	static void display(){
 
 		System.out.println("NIM \t\t Nama \t\t Matkul \t Nilai");
 
