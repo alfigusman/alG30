@@ -1,0 +1,533 @@
+import java.util.Scanner;
+
+class tugas5{
+
+	static String data[][];
+	
+	static int n;
+
+	public static void main(String[] args) {
+		
+		Scanner cin = new Scanner(System.in);
+
+		Scanner can = new Scanner(System.in);
+
+		Scanner con = new Scanner(System.in);
+
+		System.out.print("Masukkan Jumlah Data : ");
+		
+		n = cin.nextInt();
+
+		data = new String[n][4];
+
+		//Input Data
+		for (int i = 0; i < n; i++ ) {
+
+			System.out.println("Data ke-"+(i+1));
+			
+			System.out.print("Nim : ");
+			
+			data[i][0] = can.nextLine();
+			
+			System.out.print("Nama : ");
+			
+			data[i][1] = can.nextLine();
+			
+			System.out.print("Matkul : ");
+			
+			data[i][2] = can.nextLine();
+			
+			System.out.print("Nilai : ");
+			
+			data[i][3] = can.nextLine();
+			
+			System.out.println();
+			
+		}
+
+		display();
+
+		boolean ulang = true;
+		
+		do{
+
+			System.out.println("Sorting berdasarkan : ");
+			System.out.println("1. NIM");
+			System.out.println("2. Nilai");
+			System.out.print("Masukkan Pilihan : ");
+			int pil = cin.nextInt();
+			System.out.println("---------------------------------");
+			System.out.println();
+
+			System.out.println("Pilih Sorting : ");
+			System.out.println("1. Bubble Sort");
+			System.out.println("2. Selection Sort");
+			System.out.println("3. Insertion Sort");
+			System.out.println("4. Merge Sort");
+			System.out.println("5. Quick Sort");
+			System.out.println("0. Exit");
+			System.out.print("Masukkan Pilihan : ");
+			int sort = cin.nextInt();
+			System.out.println("---------------------------------");
+			System.out.println();
+
+			if (pil == 1) {
+				
+				if (sort == 1) {
+
+					bubbleSort();
+
+					ulang = true;
+					
+				}else if (sort == 2) {
+
+					selectionSort();
+
+					ulang = true;
+					
+				}else if (sort == 3) {
+
+					insertionSort();
+
+					ulang = true;
+					
+				}else if (sort == 4) {
+
+					mergeSort(0, n-1);
+
+					ulang = true;
+
+				}else if (sort == 5) {
+
+					quickSort(0, n);
+
+					ulang = true;
+					
+				}else{
+					ulang = false;
+				}
+
+			}else{
+
+				if (sort == 1) {
+
+					bubbleSort2();
+
+					ulang = true;
+					
+				}else if (sort == 2) {
+
+					selectionSort2();
+
+					ulang = true;
+					
+				}else if (sort == 3) {
+
+					insertionSort2();
+
+					ulang = true;
+					
+				}else if (sort == 4) {
+
+					ulang = true;
+
+				}else if (sort == 5) {
+
+					ulang = true;
+					
+				}else{
+					ulang = false;
+				}
+
+			}
+
+			display();
+
+		}while(ulang);
+
+	}
+
+	public void bubbleSort(){
+
+		for (int i = 0; i < n ; i++ ) {
+						
+			for (int j = 0; j < n-1 ; j++ ) {
+
+				int d1 = Integer.parseInt(data[j+1][0]);
+
+				int d2 = Integer.parseInt(data[j][0]);
+				
+				if (d1 < d2) {
+
+					swap(j, j+1);
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public void bubbleSort2(){
+
+		for (int i = 0; i < n ; i++ ) {
+						
+			for (int j = 0; j < n-1 ; j++ ) {
+
+				int d1 = Integer.parseInt(data[j+1][3]);
+
+				int d2 = Integer.parseInt(data[j][3]);
+				
+				if (d1 < d2) {
+
+					swap(j, j+1);
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public void selectionSort(){
+		
+		for (int i = 0; i < n-1 ; i++) {
+						
+			int min = i;
+			
+			for (int j = i + 1; j < n; j++) {
+				
+				int d1 = Integer.parseInt(data[min][0]);
+
+				int d2 = Integer.parseInt(data[j][0]);
+
+				if (d1 > d2){
+
+					swap(min, j);
+		
+				}
+			
+			}
+		
+		}
+
+	}
+
+	public void selectionSort2(){
+		
+		for (int i = 0; i < n-1 ; i++) {
+						
+			int min = i;
+			
+			for (int j = i + 1; j < n; j++) {
+				
+				int d1 = Integer.parseInt(data[min][3]);
+
+				int d2 = Integer.parseInt(data[j][3]);
+
+				if (d1 > d2){
+
+					swap(min, j);
+		
+				}
+			
+			}
+		
+		}
+
+	}
+
+	public void insertionSort(){
+
+		for (int i = 1; i < n; i++) {
+
+			int d1 		 = Integer.parseInt(data[i][0]);
+
+			String temp1 = data[i][0];
+			
+			String temp2 = data[i][1];
+			
+			String temp3 = data[i][2];
+			
+			String temp4 = data[i][3]; 
+
+			for (int j = i - 1; j >= 0; j--) {
+
+				int d2 = Integer.parseInt(data[j][0]);
+
+				if (d1 < d2) {
+
+					data[j+1][0] 	= data[j][0];
+
+					data[j][0]		= temp1;
+
+					data[j+1][1] 	= data[j][1];
+
+					data[j][1]		= temp2;
+
+					data[j+1][2] 	= data[j][2];
+
+					data[j][2]		= temp3;
+
+					data[j+1][3] 	= data[j][3];
+
+					data[j][3]		= temp4;
+				
+				}else{
+
+					data[j+1][0] = temp1;
+
+					data[j+1][1] = temp2;
+
+					data[j+1][2] = temp3;
+
+					data[j+1][3] = temp4;
+					
+					break;
+				}
+		
+			}
+
+		}
+		
+	}
+
+	public void insertionSort2(){
+
+		for (int i = 1; i < n; i++) {
+
+			int d1 		 = Integer.parseInt(data[i][3]);
+
+			String temp1 = data[i][0];
+			
+			String temp2 = data[i][1];
+			
+			String temp3 = data[i][2];
+			
+			String temp4 = data[i][3]; 
+
+			for (int j = i - 1; j >= 0; j--) {
+
+				int d2 = Integer.parseInt(data[j][3]);
+
+				if (d1 < d2) {
+
+					data[j+1][0] 	= data[j][0];
+
+					data[j][0]		= temp1;
+
+					data[j+1][1] 	= data[j][1];
+
+					data[j][1]		= temp2;
+
+					data[j+1][2] 	= data[j][2];
+
+					data[j][2]		= temp3;
+
+					data[j+1][3] 	= data[j][3];
+
+					data[j][3]		= temp4;
+				
+				}else{
+
+					data[j+1][0] = temp1;
+
+					data[j+1][1] = temp2;
+
+					data[j+1][2] = temp3;
+
+					data[j+1][3] = temp4;
+					
+					break;
+				}
+		
+			}
+
+		}
+		
+	}
+	
+	public void mergeSort(int l, int r){
+	
+		if (l == r) {
+	
+			return ;
+	
+		}else{
+	
+			int mid = (l + r) / 2;
+	
+			mergeSort(l, mid);
+	
+			mergeSort(mid+1, r);
+	
+			Merging(l, mid+1, r);
+	
+		}
+	
+	}
+
+	public void Merging(int kiri, int tengah, int kanan){
+		
+		int j=0;
+		
+		int batasBawah = kiri;
+		
+		int mid = tengah - 1;
+		
+		int x = kanan - batasBawah + 1;
+		
+		String tampung[][] = new String[n][4];
+
+		while(kiri <= mid && tengah <= kanan){
+
+			int d1 = Integer.parseInt(data[kiri][0]);
+
+			int d2 = Integer.parseInt(data[tengah][0]);
+
+			if (d1 < d2) {
+
+				tampung[j++][0] = data[kiri++][0];
+				tampung[j++][1] = data[kiri++][1];
+				tampung[j++][2] = data[kiri++][2];
+				tampung[j++][3] = data[kiri++][3];
+
+			}else{
+		
+				tampung[j++][0] = data[tengah++][0];
+				tampung[j++][1] = data[tengah++][1];
+				tampung[j++][2] = data[tengah++][2];
+				tampung[j++][3] = data[tengah++][3];
+		
+			}
+		
+		}
+
+		while (kiri <= mid) {
+
+			tampung[j++][0] = data[kiri++][0];
+			tampung[j++][1] = data[kiri++][1];
+			tampung[j++][2] = data[kiri++][2];
+			tampung[j++][3] = data[kiri++][3];
+
+		}
+		
+		while (tengah <= kanan) {
+
+			tampung[j++][0] = data[tengah++][0];
+			tampung[j++][1] = data[tengah++][1];
+			tampung[j++][2] = data[tengah++][2];
+			tampung[j++][3] = data[tengah++][3];
+
+		}
+
+		for (int i = 0; i < x ; i++) {
+
+			data[batasBawah+i][0] = tampung[i][0];
+			data[batasBawah+i][1] = tampung[i][1];
+			data[batasBawah+i][2] = tampung[i][2];
+			data[batasBawah+i][3] = tampung[i][3];
+
+		}
+
+	}
+
+	public void quickSort(int l, int r){
+
+		int i,j,mid;
+
+		i = l;
+
+		j = r;
+
+		mid = Integer.parseInt(data[(l+r)/2][0]);
+
+		do{
+
+			int d1 = Integer.parseInt(data[i][0]);
+
+			while (d1 < mid) {
+				
+				i++;
+
+			}
+
+			int d2 = Integer.parseInt(data[j][0]);
+
+			while (d2 > mid) {
+				
+				j--;
+
+			}
+
+			if (i <= j) {
+				
+				swap(i,j);
+
+				i++;
+
+				j--;
+
+			}
+
+		}while (i < j);
+
+		if (l < j) {
+			
+			quickSort(l,j);
+
+		}
+
+		if (i < r) {
+			
+			quickSort(i,r);
+
+		}
+		
+	}
+
+	public void swap(int a, int b){
+
+		String temp; 
+
+		temp 		= data[a][0];
+
+		data[a][0] 	= data[b][0];
+
+		data[b][0]	= temp;
+
+		temp 		= data[a][1];
+
+		data[a][1] 	= data[b][1];
+
+		data[b][1]	= temp;
+
+		temp 		= data[a][2];
+
+		data[a][2] 	= data[b][2];
+
+		data[b][2]	= temp;
+
+		temp 		= data[a][3];
+
+		data[a][3] 	= data[b][3];
+
+		data[b][3]	= temp;
+
+	}
+
+	public void display(){
+
+		System.out.println("NIM \t\t Nama \t\t Matkul \t Nilai");
+
+		for (int i = 0; i < n ; i ++ ) {
+			
+			System.out.println(data[i][0] + "\t\t" + data[i][1] + "\t\t" + data[i][2] + "\t\t" + data[i][3]);
+			
+		}
+
+	}
+
+}
